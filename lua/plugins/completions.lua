@@ -4,6 +4,10 @@ return {
   },
   {
     "github/copilot.vim",
+    config = function()
+      vim.g.copilot_no_tab_map = true
+      vim.api.nvim_set_keymap("i", "<Tab>", 'copilot#Accept("<Tab>")', { silent = true, expr = true })
+    end,
   },
   {
     "L3MON4D3/LuaSnip",
@@ -20,7 +24,6 @@ return {
 
       cmp.setup({
         snippet = {
-          -- REQUIRED - you must specify a snippet engine
           expand = function(args)
             require("luasnip").lsp_expand(args.body)
           end,
@@ -32,9 +35,9 @@ return {
         mapping = cmp.mapping.preset.insert({
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<C-Space>"] = cmp.mapping.complete(), -- Trigger completion menu with Ctrl+Space
           ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item only if selected
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
@@ -46,3 +49,4 @@ return {
     end,
   },
 }
+
