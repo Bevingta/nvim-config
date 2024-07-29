@@ -39,9 +39,10 @@ return {
 		}
 		-- Set menu
 		dashboard.section.buttons.val = {
-			dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-			dashboard.button("Space fg", "  > Find file", ":cd $HOME/Workspace | Telescope find_files<CR>"),
-            dashboard.button("Space gn", "  > Global Note", ":GlobalNote<CR>"),
+			dashboard.button("Space of", "-  Recent Files", ":Telescope oldfiles<CR>"),
+			dashboard.button("Space p", "- 󰭎 Find Files", ":Telescope find_files<CR>"),
+			dashboard.button("Space fg", "-   Fuzzy Search", ":Telescope live_grep<CR>"),
+            dashboard.button("Space gn", "-   Global Note", ":GlobalNote<CR>"),
 		}
 
 		alpha.setup(dashboard.opts)
