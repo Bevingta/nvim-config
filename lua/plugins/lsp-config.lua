@@ -11,7 +11,7 @@ return {
 			require("mason-lspconfig").setup({
 
 				-- needs to be edited on the addition of a lanaguage
-				ensure_installed = { "lua_ls", "pyright" },
+				ensure_installed = { "lua_ls", "pyright", "clangd" },
 			})
 		end,
 	},
@@ -25,6 +25,7 @@ return {
 			-- needs to be edited on the addition of a lanaguage
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
 			lspconfig.pyright.setup({ capabilites = capabilities })
+            lspconfig.clangd.setup({ capabilities = capabilities })
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
